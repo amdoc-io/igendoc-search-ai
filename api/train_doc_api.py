@@ -23,15 +23,12 @@ def train_doc():
         repo=repo,
         sha=sha,
     )
-    contents = [
-        github_builder.get_repo_content(
-            git_installation_token=git_installation_token,
-            owner=owner,
-            repo=repo,
-            path=path,
-        )
-        for path in file_paths
-    ]
+    contents = github_builder.get_repo_contents(
+        git_installation_token=git_installation_token,
+        owner=owner,
+        repo=repo,
+        paths=file_paths,
+    )
 
     data = {
         "message": {

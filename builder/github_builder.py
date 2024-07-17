@@ -1,5 +1,6 @@
 from accessor import github_accessor
 import base64
+import concurrent.futures
 
 
 def get_commit_sha(git_installation_token: str, owner: str, repo: str, ref: str) -> str:
@@ -29,6 +30,28 @@ def get_file_paths(
         and tree_path["path"] != "src"
         and tree_path["path"].endswith(".md")
     ]
+
+
+def get_repo_contents(
+    git_installation_token: str, owner: str, repo: str, paths: list[str]
+) -> list[str]:
+    results = []
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        futures = [
+            executor.submit(
+                get_repo_content,
+                git_installation_token,
+                owner,
+                repo,
+                path,
+            )
+            for path in paths
+        ]
+
+        results = [
+            future.result() for future in concurrent.futures.as_completed(futures)
+        ]
+    return results
 
 
 def get_repo_content(
