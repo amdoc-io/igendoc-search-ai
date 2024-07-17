@@ -7,4 +7,4 @@ app.before_request(middleware)
 register_all_apis(app=app)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=8000, debug=True)
