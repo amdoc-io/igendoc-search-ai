@@ -2,6 +2,8 @@
 
 ## Instruction
 
+Follow this instruction from the root folder
+
 1. Create a VM:
 
 ```
@@ -17,7 +19,7 @@ source myenv/bin/activate
 3. Install dependencies:
 
 ```
-pip install -r requirements.txt
+pip install -r app/requirement.txt
 ```
 
 4. Run the server:
