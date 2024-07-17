@@ -1,4 +1,5 @@
 from accessor import github_accessor
+import base64
 
 
 def get_commit_sha(git_installation_token: str, owner: str, repo: str, ref: str) -> str:
@@ -28,3 +29,14 @@ def get_file_paths(
         and tree_path["path"] != "src"
         and tree_path["path"].endswith(".md")
     ]
+
+
+def get_repo_content(
+    git_installation_token: str, owner: str, repo: str, path: str
+) -> str:
+    repo_content = github_accessor.get_repo_content(
+        git_installation_token=git_installation_token, owner=owner, repo=repo
+    )
+    encoded_content = repo_content["content"]
+    decoded_content_bytes = base64.b64decode(encoded_content)
+    return decoded_content_bytes.decode("utf-8")

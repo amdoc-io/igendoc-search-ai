@@ -28,3 +28,15 @@ def get_tree(git_installation_token: str, owner: str, repo: str, sha: str):
     }
     response = requests.get(url, headers=headers, params=params)
     return response.json()
+
+
+def get_repo_content(git_installation_token: str, owner: str, repo: str, path: str):
+    url = "{}/repos/{}/{}/contents/{}".format(BASE_URL, owner, repo, path)
+    headers = {
+        "Authorization": "Bearer {}".format(git_installation_token),
+        "Content-Type": "application/json",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    response = requests.get(url, headers=headers)
+    return response.json()

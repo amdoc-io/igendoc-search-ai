@@ -23,6 +23,15 @@ def train_doc():
         repo=repo,
         sha=sha,
     )
+    contents = "\n\n--------------------------\n\n".join(
+        github_builder.get_repo_content(
+            git_installation_token=git_installation_token,
+            owner=owner,
+            repo=repo,
+            path=path,
+        )
+        for path in file_paths
+    )
 
     data = {
         "message": {
@@ -30,6 +39,7 @@ def train_doc():
             "git_installation_token": git_installation_token,
             "sha": sha,
             "file_paths": file_paths,
+            "contents": contents,
         }
     }
     return jsonify(data), 200
