@@ -31,12 +31,10 @@ def train_doc():
     )
 
     data = {
-        "message": {
-            "body": body,
-            "git_installation_token": git_installation_token,
-            "sha": sha,
-            "file_paths": file_paths,
-            "contents": contents,
-        }
+        "body": body,
+        "git_installation_token": git_installation_token,
+        "sha": sha,
+        "file_paths": file_paths,
+        "contents": contents,
     }
     return jsonify(data), 200
