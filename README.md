@@ -19,7 +19,7 @@ source myenv/bin/activate
 3. Install dependencies:
 
 ```
-pip install -r app/requirement.txt
+pip install -r requirements.txt
 ```
 
 4. Run the server:
