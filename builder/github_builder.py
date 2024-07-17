@@ -35,7 +35,7 @@ def get_repo_content(
     git_installation_token: str, owner: str, repo: str, path: str
 ) -> str:
     repo_content = github_accessor.get_repo_content(
-        git_installation_token=git_installation_token, owner=owner, repo=repo
+        git_installation_token=git_installation_token, owner=owner, repo=repo, path=path
     )
     encoded_content = repo_content["content"]
     decoded_content_bytes = base64.b64decode(encoded_content)
