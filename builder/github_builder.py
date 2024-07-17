@@ -24,5 +24,7 @@ def get_file_paths(
     return [
         tree_path["path"]
         for tree_path in tree_paths
-        if tree_path["path"].startswith("src") and tree_path["path"] != "src"
+        if tree_path["path"].startswith("src")
+        and tree_path["path"] != "src"
+        and tree_path["path"].endswith(".md")
     ]
