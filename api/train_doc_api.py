@@ -1,5 +1,5 @@
 from flask import jsonify, Blueprint, request
-from accessor import github_accessor
+from builder import github_builder
 
 train_doc_api_blueprint = Blueprint("train_doc_api_blueprint", __name__)
 
@@ -11,25 +11,25 @@ def train_doc():
     owner = body["owner"]
     repo = body["repo"]
 
-    commit = github_accessor.getCommit(
+    sha = github_builder.get_commit_sha(
         git_installation_token=git_installation_token,
         owner=owner,
         repo=repo,
         ref="heads/main",
     )
-    tree = github_accessor.get_tree(
+    file_paths = github_builder.get_file_paths(
         git_installation_token=git_installation_token,
         owner=owner,
         repo=repo,
-        sha=commit["sha"],
+        sha=sha,
     )
 
     data = {
         "message": {
             "body": body,
             "git_installation_token": git_installation_token,
-            "commit": commit,
-            "tree": tree,
+            "sha": sha,
+            "file_paths": file_paths,
         }
     }
     return jsonify(data), 200

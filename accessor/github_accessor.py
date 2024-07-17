@@ -3,7 +3,7 @@ import requests
 BASE_URL = "https://api.github.com"
 
 
-def getCommit(git_installation_token: str, owner: str, repo: str, ref: str):
+def get_latest_commit(git_installation_token: str, owner: str, repo: str, ref: str):
     url = "{}/repos/{}/{}/commits/{}".format(BASE_URL, owner, repo, ref)
     headers = {
         "Authorization": "Bearer {}".format(git_installation_token),
