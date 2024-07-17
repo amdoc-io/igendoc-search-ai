@@ -55,3 +55,15 @@ ssh -i "path/to/sshkey" root@ai.server.igendoc.com
 ```
 docker logs search-ai-server
 ```
+
+The following logs should show:
+
+```
+[2024-07-17 05:59:43 +0000] [1] [INFO] Starting gunicorn 22.0.0
+[2024-07-17 05:59:43 +0000] [1] [INFO] Listening at: http://0.0.0.0:5000 (1)
+[2024-07-17 05:59:43 +0000] [1] [INFO] Using worker: sync
+[2024-07-17 05:59:43 +0000] [7] [INFO] Booting worker with pid: 7
+[2024-07-17 05:59:43 +0000] [8] [INFO] Booting worker with pid: 8
+[2024-07-17 05:59:43 +0000] [9] [INFO] Booting worker with pid: 9
+[2024-07-17 05:59:44 +0000] [10] [INFO] Booting worker with pid: 10
+```
