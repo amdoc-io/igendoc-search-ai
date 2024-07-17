@@ -7,13 +7,13 @@ Follow this instruction from the root folder
 1. Create a VM:
 
 ```
-python3 -m venv myenv
+python3 -m venv venv
 ```
 
 2. Activate the VM:
 
 ```
-source myenv/bin/activate
+source venv/bin/activate
 ```
 
 3. Install dependencies:
