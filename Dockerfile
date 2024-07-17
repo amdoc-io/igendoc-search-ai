@@ -1,14 +1,9 @@
 FROM --platform=linux/amd64 python:3.10-alpine AS builder
 
-WORKDIR /app
+WORKDIR /igendoc-search-ai
 
-COPY . /app
+COPY . /igendoc-search-ai
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip3 install -r requirements.txt
 
-# Make port 5000 available to the world outside this container
-EXPOSE 5000
-
-# Run app.py when the container launches
-CMD ["python3", "app.py"]
+CMD ["python3", "app/app.py"]
