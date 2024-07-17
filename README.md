@@ -25,7 +25,13 @@ pip install -r requirements.txt
 4. Run the server:
 
 ```
-python app/app.py
+python app.py
 ```
 
 5. Test the server by hitting this GET endpoint: [hello-api](http://127.0.0.1:5000/v1/hello)
+
+6. To deploy, run:
+
+```
+./deploy "commit message"
+```
