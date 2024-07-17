@@ -47,3 +47,5 @@ ssh -i "path/to/sshkey" root@ai.server.igendoc.com
 ```
 ./start.sh
 ```
+
+9. Test endpoint in production: [hello-api](http://ai.server.igendoc.com:5000/v1/hello)
