@@ -2,25 +2,13 @@ FROM --platform=$BUILDPLATFORM python:3.10-alpine AS builder
 
 WORKDIR /app
 
-COPY requirements.txt /app
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip3 install -r requirements.txt
-
 COPY . /app
 
-ENTRYPOINT ["python3"]
-CMD ["app.py"]
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-FROM builder as dev-envs
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
 
-RUN <<EOF
-apk update
-apk add git
-EOF
-
-RUN <<EOF
-addgroup -S docker
-adduser -S --shell /bin/bash --ingroup docker vscode
-EOF
-# install Docker tools (cli, buildx, compose)
-COPY --from=gloursdocker/docker / /
+# Run app.py when the container launches
+CMD ["python", "app.py"]
