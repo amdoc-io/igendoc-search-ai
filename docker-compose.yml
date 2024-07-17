@@ -3,6 +3,7 @@ version: '3'
 services:
   web:
     image: tungxd96/doc-ai-service:search-ai-server
+    container_name: search-ai-server
     build: '.'
     ports:
       - '5000:5000'
