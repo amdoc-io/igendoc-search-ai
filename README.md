@@ -35,3 +35,15 @@ python app.py
 ```
 ./deploy "commit message"
 ```
+
+7. Once deployment is done in step 6, ssh to the remote host:
+
+```
+ssh -i "path/to/sshkey" root@ai.server.igendoc.com
+```
+
+8. In the remote host root level, run:
+
+```
+./start.sh
+```
