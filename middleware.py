@@ -7,7 +7,7 @@ def middleware():
         if not git_installation_token:
             return (
                 jsonify(
-                    {"error": "Authorized: Missing X-Git-Installation-Token header"}
+                    {"error": "Unauthorized: Missing X-Git-Installation-Token header"}
                 ),
                 401,
             )
